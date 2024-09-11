@@ -21,7 +21,7 @@ const palette = {
   secondary100: "#DCDDE9",
   secondary200: "#BCC0D6",
   secondary300: "#9196B9",
-  secondary400: "#626894",
+  secondary400: "#306db3",
   secondary500: "#41476E",
 
   accent100: "#FFEED4",
@@ -48,6 +48,8 @@ export const colors = {
    * A helper for making something see-thru.
    */
   transparent: "rgba(0, 0, 0, 0)",
+
+  buttonsBg: palette.secondary400,
   /**
    * The default text color in many components.
    */

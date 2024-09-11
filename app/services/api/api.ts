@@ -44,6 +44,14 @@ export class Api {
     })
   }
 
+  executeLogin = async (email: string, password: string) => {
+    if(email.toLowerCase() === 'admin@mail.com' && password === 'admin'){
+      return { data: { token: 'admin' }, ok: true, status: 200 }
+    } else {
+      return { data: { error: 'Wrong email or password' }, ok: false, status: 401 }
+    }
+  }
+
 }
 
 // Singleton instance of the API for convenience
