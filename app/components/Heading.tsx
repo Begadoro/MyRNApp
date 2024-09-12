@@ -2,8 +2,8 @@ import * as React from "react"
 import { StyleProp, View, ViewStyle, StyleSheet, Text } from "react-native"
 import { observer } from "mobx-react-lite"
 import { colors, spacing } from "app/theme"
-import { ReactNode } from "react"
 import { bold, h1, h2, h3 } from "app/utils/constants"
+import { Feather } from "@expo/vector-icons"
 
 export interface HeadingProps {
   /**
@@ -12,7 +12,8 @@ export interface HeadingProps {
   style?: StyleProp<ViewStyle>,
   text: string
   fontColor?: string
-  icon?: ReactNode
+  iconColor?: string
+  icon?: typeof Feather[keyof typeof Feather]
   h?: string
 }
 
@@ -32,7 +33,7 @@ export const Heading = observer(function Heading(props: HeadingProps) {
 
   return (
     <View style={[$style.container, props.style]}>
-      {props.icon ? props.icon : null}
+      {props.icon ? <Feather  name={props.icon} size={spacing.lg} color={props.iconColor ?? colors.text}/> : null}
       <Text style={[heading, bold, $style.text]}>{props.text}</Text>
     </View>
   )

@@ -13,7 +13,8 @@ export interface BafgeProps {
   color?: string
   icon?: typeof Feather[keyof typeof Feather]
   text: string
-  onPress?: () => void
+  onPress?: () => void,
+  hasDelete?: boolean
 }
 
 /**
@@ -29,7 +30,7 @@ export const Badge = observer(function Badge(props: BafgeProps) {
         <Feather name={props.icon} size={spacing.sm} color={props.color ?? colors.text}/> : null
       }
       <Text style={$style.text}>{props.text}</Text>
-      <Feather name={"x"} size={spacing.sm} color={props.color ?? colors.text}/>
+      { props.hasDelete ? <Feather name={"x"} size={spacing.sm} color={props.color ?? colors.text}/> : null}
     </TouchableOpacity>
   )
 })

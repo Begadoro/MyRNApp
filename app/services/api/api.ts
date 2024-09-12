@@ -11,7 +11,7 @@ import {
 } from "apisauce"
 import Config from "../../config"
 import type {
-  ApiConfig,
+  ApiConfig, StandardResponse,
 } from "./api.types"
 
 /**
@@ -44,38 +44,49 @@ export class Api {
     })
   }
 
-  executeLogin = async (email: string, password: string) => {
-    if(email.toLowerCase() === 'admin@mail.com' && password === 'admin'){
-      return { data: { token: 'admin' }, ok: true, status: 200 }
-    } else {
-      return { data: { error: 'Wrong email or password' }, ok: false, status: 401 }
+  executeLogin = async (email: string, password: string) : Promise<StandardResponse> => {
+    try{
+      const req = await this.apisauce.post("/api/auth", { email, password });
+      return { ok: req.ok, status: req.status, data: req.data };
+    } catch (e : any) {
+      return { ok: false, status: e.status, data: e.data };
     }
   }
 
-  getProducts = async (name: string, category: string) => {
-
-    // Backend filter simulation
-    let products = [
-      {id: 1, name: "White Chair Model Y", category: "Home", price: 59, image: require("../../../assets/images/item1.png")},
-      {id: 2, name: "iPhone 16 - Red (256GB)", price: 989, category: "Tech", image: require("../../../assets/images/iphone.jpg")},
-      {id: 3, name: "Guess - Black Bag", price: 120, category: "Clothes", image: require("../../../assets/images/guess.jpeg")},
-      {id: 4, name: "Desktop Gaming (RTX 4090)", price: 2499, category: "Tech", image: require("../../../assets/images/gaming.png")},
-    ]
-
-    if(name !== ""){
-      products = products.filter((product) => {
-        return product.name.toLowerCase().includes(name.toLowerCase())
-      })
+  executeLogout = async () : Promise<StandardResponse> => {
+    try{
+      const req = await this.apisauce.delete("/api/auth");
+      return { ok: req.ok, status: req.status, data: req.data };
+    } catch (e : any) {
+      return { ok: false, status: e.status, data: e.data };
     }
+  }
 
-    if(category !== "All"){
-      products = products.filter((product) => {
-        return product.category.toLowerCase().includes(category.toLowerCase())
-      })
+  checkSession = async () : Promise<StandardResponse> => {
+    try{
+      const req = await this.apisauce.get("/api/auth/session");
+      return { ok: req.ok, status: req.status, data: req.data };
+    } catch (e : any) {
+      return { ok: false, status: e.status, data: e.data };
     }
-    // ----------------------------------
+  }
 
-    return { data: products, ok: true, status: 200 }
+  getProducts = async (page: number) : Promise<StandardResponse> => {
+    try {
+      const req = await this.apisauce.get("/api/products", { page, limit: 10 });
+      return { ok: req.ok, status: req.status, data: req.data };
+    } catch (e : any) {
+      return { ok: false, status: e.status, data: { message: "Something went wrong" } };
+    }
+  }
+
+  getProductDetails = async (id: number) : Promise<StandardResponse> => {
+    try {
+      const req = await this.apisauce.get(`/api/products/${id}`);
+      return { ok: req.ok, status: req.status, data: req.data };
+    } catch (e : any) {
+      return { ok: false, status: e.status, data: { message: "Something went wrong" } };
+    }
   }
 
 }

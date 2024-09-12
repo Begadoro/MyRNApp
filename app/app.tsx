@@ -10,6 +10,7 @@
  * The app navigation resides in ./app/navigators, so head over there
  * if you're interested in adding screens and navigators.
  */
+
 if (__DEV__) {
   // Load Reactotron in development only.
   // Note that you must be using metro's `inlineRequires` for this to work.
@@ -96,6 +97,7 @@ function App(props: AppProps) {
     prefixes: [prefix],
     config,
   }
+
 
   // otherwise, we're ready to render the app
   return (

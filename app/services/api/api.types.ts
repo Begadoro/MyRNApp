@@ -36,9 +36,24 @@ export interface ApiFeedResponse {
 
 export interface ProductFromAPI {
   id: number
-  name: string
+  title: string
+  image: string
+}
+
+export interface ProductDetailsFromAPI {
+  id: number
+  title: string
+  image: string
+  description: string
   price: number
-  image: any
+  rating: number
+  createdAt: string
+}
+
+export interface StandardResponse {
+  ok: boolean
+  status: number | string | undefined
+  data: any
 }
 
 /**

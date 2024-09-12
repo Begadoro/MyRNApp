@@ -6,5 +6,5 @@
  * https://reactnative.dev/docs/security#storing-sensitive-info
  */
 export default {
-  API_URL: "http.google.com",
+  API_URL: "https://marketplace-be-od7a.onrender.com/",
 }

@@ -1,37 +1,48 @@
-import React, { FC, useLayoutEffect } from "react"
+import React, { FC, useLayoutEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
-import { Button, CustomInput, Heading, Screen } from "app/components"
+import { Button, CustomHeader, CustomInput, Heading, Loader, Screen } from "app/components"
 import { Controller, useForm } from "react-hook-form"
 import { colors, spacing } from "app/theme"
 import { api } from "app/services/api"
 import { emailRegex } from "app/utils/constants"
+import { useStores } from "app/models"
 
 interface LoginScreenProps extends AppStackScreenProps<"Login"> {}
 
 export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen({ navigation}) {
   const style = getStyles();
   const { control, handleSubmit, formState: { errors } } = useForm();
+  const { UserStore } = useStores();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
       headerTransparent: true,
       headerTitle: "",
-      headerRight: () =>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+      header: () =>
+        <CustomHeader
+          leftComponent={
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Text style={{ color: colors.buttonsBg }}>Back</Text>
-        </TouchableOpacity>
+        </TouchableOpacity>}
+
+      />
     })
   });
   const submit = async (data : any) => {
-    const loginRequest = await api.executeLogin(data.email, data.password);
-    if(loginRequest.ok){
+    setIsLoading(true);
+    const res = await api.executeLogin(data.email, data.password);
+    if(res.ok){
+      UserStore.setIsLoggedIn(true);
       navigation.navigate("Home");
     } else {
-      Alert.alert("Login failed", loginRequest.data.error);
+      Alert.alert("Error", res.data.message);
     }
+    setIsLoading(false);
   }
 
   return (
@@ -73,6 +84,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen({
         </View>
         <Button text={"Login"} onPress={handleSubmit(submit)} textStyle={{color: "white"}} />
       </KeyboardAvoidingView>
+      <Loader isLoading={isLoading}/>
     </Screen>
   )
 })

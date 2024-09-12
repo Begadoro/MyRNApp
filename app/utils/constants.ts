@@ -19,8 +19,8 @@ export const bold: TextStyle = {
 }
 
 export const categories = [
-  {id: 1, name: "Home", image: require("../../assets/images/home.png")},
-  {id: 2, name: "Clothes", image: require("../../assets/images/clothes.png")},
-  {id: 3, name: "Tech", image: require("../../assets/images/tech.jpg")},
-  {id: 4, name: "Pets", image: require("../../assets/images/pets.jpg")},
+  {id: 1, name: "Fish", image: { uri: ("https://loremflickr.com/126/1119?lock=4367885805325087") }},
+  {id: 2, name: "Towels", image: { uri: ("https://loremflickr.com/2277/1940?lock=7998478386322990") }},
+  {id: 3, name: "Computer", image: { uri: ("https://loremflickr.com/2739/989?lock=4861779448760869") }},
+  {id: 4, name: "Ball", image: { uri: ("https://loremflickr.com/2422/3348?lock=2675313204322099") }},
 ]
