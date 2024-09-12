@@ -58,8 +58,8 @@ const AppStack = observer(function AppStack() {
     <Stack.Navigator
       screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
     >
-      <Stack.Screen name="Login" component={Screens.LoginScreen} />
       <Stack.Screen name="Home" component={Screens.HomeScreen} />
+      <Stack.Screen name="Login" component={Screens.LoginScreen} />
     </Stack.Navigator>
   )
 })

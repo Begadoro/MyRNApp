@@ -2,7 +2,7 @@ import React, { FC, useLayoutEffect } from "react"
 import { observer } from "mobx-react-lite"
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
-import { Button, CustomInput, Screen } from "app/components"
+import { Button, CustomInput, Heading, Screen } from "app/components"
 import { Controller, useForm } from "react-hook-form"
 import { colors, spacing } from "app/theme"
 import { api } from "app/services/api"
@@ -37,15 +37,16 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen({
   return (
     <Screen style={style.root} preset="fixed">
       <KeyboardAvoidingView style={style.container}>
-        <Text style={style.title}>MYMARKETPLACE.COM</Text>
+        <Heading text={"Marketplace"}/>
         <View style={style.inputsContainer}>
           <Controller
             control={control}
             render={({ field: { onChange, value } }) => (
               <CustomInput
+                icon={"mail"}
                 onChange={onChange}
                 value={value}
-                placeholder={"📧 Email"}
+                placeholder={"Email"}
                 errors={errors.email}
               />
             )}
@@ -56,9 +57,10 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen({
             control={control}
             render={({ field: { onChange, value, onBlur } }) => (
               <CustomInput
+                icon={"lock"}
                 onChange={onChange}
                 value={value}
-                placeholder={"🔑 Password"}
+                placeholder={"Password"}
                 onBlur={onBlur}
                 type="password"
                 errors={errors.password}

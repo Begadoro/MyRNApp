@@ -52,6 +52,32 @@ export class Api {
     }
   }
 
+  getProducts = async (name: string, category: string) => {
+
+    // Backend filter simulation
+    let products = [
+      {id: 1, name: "White Chair Model Y", category: "Home", price: 59, image: require("../../../assets/images/item1.png")},
+      {id: 2, name: "iPhone 16 - Red (256GB)", price: 989, category: "Tech", image: require("../../../assets/images/iphone.jpg")},
+      {id: 3, name: "Guess - Black Bag", price: 120, category: "Clothes", image: require("../../../assets/images/guess.jpeg")},
+      {id: 4, name: "Desktop Gaming (RTX 4090)", price: 2499, category: "Tech", image: require("../../../assets/images/gaming.png")},
+    ]
+
+    if(name !== ""){
+      products = products.filter((product) => {
+        return product.name.toLowerCase().includes(name.toLowerCase())
+      })
+    }
+
+    if(category !== "All"){
+      products = products.filter((product) => {
+        return product.category.toLowerCase().includes(category.toLowerCase())
+      })
+    }
+    // ----------------------------------
+
+    return { data: products, ok: true, status: 200 }
+  }
+
 }
 
 // Singleton instance of the API for convenience
