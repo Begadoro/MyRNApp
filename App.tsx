@@ -5,6 +5,9 @@ import App from "./app/app"
 
 SplashScreen.preventAutoHideAsync()
 
+if (__DEV__) {
+  require("./ReactotronConfig");
+}
 function IgniteApp() {
   return <App hideSplashScreen={SplashScreen.hideAsync} />
 }

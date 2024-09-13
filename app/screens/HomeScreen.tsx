@@ -3,15 +3,15 @@ import { observer } from "mobx-react-lite"
 import { Alert, ScrollView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
 import {
-  Badge,
-  Button,
-  CategorySquare,
-  CustomHeader,
-  CustomInput,
-  Heading,
-  ItemSquare,
-  Loader,
-  Screen,
+    Badge,
+    Button,
+    CategorySquare,
+    CustomHeader,
+    CustomInput,
+    Heading,
+    ItemSquare,
+    Loader, RoundIconButton,
+    Screen,
 } from "app/components"
 import Animated, { useAnimatedRef, useScrollViewOffset } from "react-native-reanimated"
 import { colors, spacing } from "app/theme"
@@ -188,7 +188,10 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen({ na
               </View>
             </View>
           ) : (
-            <Text>{translate("homeScreen.noFounds")}</Text>
+              <View style={style.noFoundContainer}>
+                  <Text>{translate("homeScreen.noFounds")}</Text>
+                  <RoundIconButton icon={"refresh-ccw"} onPress={() => fetchData(page)} backgroundColor={colors.border} />
+              </View>
           )}
         </View>
       </Animated.ScrollView>
@@ -219,6 +222,13 @@ const getStyles = () =>
       gap: spacing.md,
       paddingBottom: spacing.xxxl * 4,
     },
+      noFoundContainer:{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        gap: 20
+      },
     productsContainer: {
       gap: spacing.sm,
     },
