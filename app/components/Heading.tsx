@@ -18,7 +18,7 @@ export interface HeadingProps {
 }
 
 /**
- * Describe your component here
+ * Heading component which renders the heading text like h1, h2 and h3
  */
 export const Heading = observer(function Heading(props: HeadingProps) {
 

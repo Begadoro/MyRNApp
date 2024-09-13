@@ -13,7 +13,7 @@ export interface LoaderProps {
 }
 
 /**
- * Describe your component here
+ * Page overlay showing a loader
  */
 export const Loader = observer(function Loader(props: LoaderProps) {
 

@@ -15,7 +15,7 @@ export interface ItemSquareProps {
 }
 
 /**
- * Describe your component here
+ * Pressable view containing a product image, title and a short description
  */
 export const ItemSquare = observer(function ItemSquare(props: ItemSquareProps) {
   const style = getStyles()

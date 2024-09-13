@@ -18,7 +18,8 @@ export interface CustomHeaderProps {
 }
 
 /**
- * Describe your component here
+ * Custom header with left and right components.
+ * Props are used to animate the header
  */
 export const CustomHeader = observer(function CustomHeader(props: CustomHeaderProps) {
 

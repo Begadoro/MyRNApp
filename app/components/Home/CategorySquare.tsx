@@ -15,7 +15,7 @@ export interface CategorySquareProps {
 }
 
 /**
- * Describe your component here
+ * Pressable view with an image representing a category
  */
 export const CategorySquare = observer(function CategorySquare(props: CategorySquareProps) {
 

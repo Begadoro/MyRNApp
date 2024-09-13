@@ -18,7 +18,7 @@ export interface BafgeProps {
 }
 
 /**
- * Describe your component here
+ * Simple clickable badge
  */
 export const Badge = observer(function Badge(props: BafgeProps) {
 
