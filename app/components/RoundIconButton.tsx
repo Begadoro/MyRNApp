@@ -18,7 +18,7 @@ export interface RoundIconButtonProps {
 }
 
 /**
- * Describe your component here
+ * Simple round button 44x44
  */
 export const RoundIconButton = observer(function RoundIconButton(props: RoundIconButtonProps) {
   const $style = getStyle(props.backgroundColor ?? colors.background, props.opacity ?? 1, !!props.text, props.textColor);

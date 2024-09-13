@@ -14,7 +14,7 @@ export interface ButtonProps {
 }
 
 /**
- * Describe your component here
+ * Standard customizable button. It takes 100% of width of his parent
  */
 export const Button = observer(function Button(props: ButtonProps) {
 

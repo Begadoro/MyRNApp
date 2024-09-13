@@ -20,7 +20,7 @@ export interface CustomInputProps {
 }
 
 /**
- * Describe your component here
+ * Custom input component for React Form Hooks
  */
 export const CustomInput = observer(function CustomInput(props: CustomInputProps) {
 
