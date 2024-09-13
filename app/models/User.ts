@@ -16,7 +16,13 @@ export const UserModel = types
   .actions((self) => ({
     setIsLoggedIn(isLoggedIn: boolean) {
       self.isLoggedIn = isLoggedIn
-    }
+    },
+    setName(name: string) {
+      self.name = name
+    },
+    setEmail(email: string) {
+      self.email = email
+    },
   })) // eslint-disable-line @typescript-eslint/no-unused-vars
 
 export interface User extends Instance<typeof UserModel> {}

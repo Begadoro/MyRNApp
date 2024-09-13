@@ -5,14 +5,9 @@
  * See the [Backend API Integration](https://docs.infinite.red/ignite-cli/boilerplate/app/services/#backend-api-integration)
  * documentation for more details.
  */
-import {
-  ApisauceInstance,
-  create,
-} from "apisauce"
+import { ApisauceInstance, create } from "apisauce"
 import Config from "../../config"
-import type {
-  ApiConfig, StandardResponse,
-} from "./api.types"
+import type { ApiConfig, StandardResponse } from "./api.types"
 
 /**
  * Configuring the apisauce instance.
@@ -44,51 +39,50 @@ export class Api {
     })
   }
 
-  executeLogin = async (email: string, password: string) : Promise<StandardResponse> => {
-    try{
-      const req = await this.apisauce.post("/api/auth", { email, password });
-      return { ok: req.ok, status: req.status, data: req.data };
-    } catch (e : any) {
-      return { ok: false, status: e.status, data: e.data };
-    }
-  }
-
-  executeLogout = async () : Promise<StandardResponse> => {
-    try{
-      const req = await this.apisauce.delete("/api/auth");
-      return { ok: req.ok, status: req.status, data: req.data };
-    } catch (e : any) {
-      return { ok: false, status: e.status, data: e.data };
-    }
-  }
-
-  checkSession = async () : Promise<StandardResponse> => {
-    try{
-      const req = await this.apisauce.get("/api/auth/session");
-      return { ok: req.ok, status: req.status, data: req.data };
-    } catch (e : any) {
-      return { ok: false, status: e.status, data: e.data };
-    }
-  }
-
-  getProducts = async (page: number) : Promise<StandardResponse> => {
+  executeLogin = async (email: string, password: string): Promise<StandardResponse> => {
     try {
-      const req = await this.apisauce.get("/api/products", { page, limit: 10 });
-      return { ok: req.ok, status: req.status, data: req.data };
-    } catch (e : any) {
-      return { ok: false, status: e.status, data: { message: "Something went wrong" } };
+      const req = await this.apisauce.post("/api/auth", { email, password })
+      return { ok: req.ok, status: req.status, data: req.data }
+    } catch (e: any) {
+      return { ok: false, status: e.status, data: e.data }
     }
   }
 
-  getProductDetails = async (id: number) : Promise<StandardResponse> => {
+  executeLogout = async (): Promise<StandardResponse> => {
     try {
-      const req = await this.apisauce.get(`/api/products/${id}`);
-      return { ok: req.ok, status: req.status, data: req.data };
-    } catch (e : any) {
-      return { ok: false, status: e.status, data: { message: "Something went wrong" } };
+      const req = await this.apisauce.delete("/api/auth")
+      return { ok: req.ok, status: req.status, data: req.data }
+    } catch (e: any) {
+      return { ok: false, status: e.status, data: e.data }
     }
   }
 
+  checkSession = async (): Promise<StandardResponse> => {
+    try {
+      const req = await this.apisauce.get("/api/auth/session")
+      return { ok: req.ok, status: req.status, data: req.data }
+    } catch (e: any) {
+      return { ok: false, status: e.status, data: e.data }
+    }
+  }
+
+  getProducts = async (page: number): Promise<StandardResponse> => {
+    try {
+      const req = await this.apisauce.get("/api/products", { page, limit: 10 })
+      return { ok: req.ok, status: req.status, data: req.data }
+    } catch (e: any) {
+      return { ok: false, status: e.status, data: { message: "Something went wrong" } }
+    }
+  }
+
+  getProductDetails = async (id: number): Promise<StandardResponse> => {
+    try {
+      const req = await this.apisauce.get(`/api/products/${id}`)
+      return { ok: req.ok, status: req.status, data: req.data }
+    } catch (e: any) {
+      return { ok: false, status: e.status, data: { message: "Something went wrong" } }
+    }
+  }
 }
 
 // Singleton instance of the API for convenience

@@ -1,27 +1,28 @@
-const en = {
+
+const it = {
   common: {
     ok: "OK!",
-    cancel: "Cancel",
-    back: "Back",
-    somethingWrong: "Something went wrong",
-    error: "Error",
-    loggedOut: "User logged out",
+    cancel: "Cancellare",
+    back: "Indietro",
+    somethingWrong: "Qualcosa è andato storto",
+    error: "Errore",
+    loggedOut: "Utente disconnesso",
   },
-  loginScreen: {
-    missingFields: "Email or password not correctly filled",
+  loginScreen:{
+    missingFields: "Email o password non correttamente compilati"
   },
-  homeScreen: {
-    explore: "Explore",
-    categories: "Categories",
-    popular: "Popular",
-    search: "Search",
-    noFounds: "Nothing found",
-    more: "Load More",
-    itemDesc: "This is particular kind of ",
+  homeScreen:{
+    explore: "Esplora",
+    categories: "Categorie",
+    popular: "Popolari",
+    search: "Cerca",
+    noFounds: "Nessun prodotto trovato",
+    more: "Carica altro",
+    itemDesc: "Questo è un particolarissimo tipo di "
   },
-  productScreen: {
-    addedFav: "Added to favorites",
-    buy: "Buy: ",
+  productScreen:{
+    addedFav: "Aggiunto ai preferiti",
+    buy: "Acquista: "
   },
   errorScreen: {
     title: "Something went wrong!",
@@ -38,5 +39,5 @@ const en = {
   },
 }
 
-export default en
-export type Translations = typeof en
+export default it
+export type Translations = typeof it

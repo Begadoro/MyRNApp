@@ -1,6 +1,6 @@
 import React, { FC, useLayoutEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
-import { Alert, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import { KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { AppStackScreenProps } from "app/navigators"
 import { Button, CustomHeader, CustomInput, Heading, Loader, Screen } from "app/components"
 import { Controller, useForm } from "react-hook-form"
@@ -8,6 +8,8 @@ import { colors, spacing } from "app/theme"
 import { api } from "app/services/api"
 import { emailRegex } from "app/utils/constants"
 import { useStores } from "app/models"
+import { translate } from "app/i18n"
+import { ErrorAlert } from "app/utils/errorAlert"
 
 interface LoginScreenProps extends AppStackScreenProps<"Login"> {}
 
@@ -23,14 +25,15 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen({
       headerShown: true,
       headerTransparent: true,
       headerTitle: "",
-      header: () =>
+      header: () => (
         <CustomHeader
           leftComponent={
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
-          <Text style={{ color: colors.buttonsBg }}>Back</Text>
-        </TouchableOpacity>}
-
-      />
+            <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+              <Text style={{ color: colors.buttonsBg }}>{translate("common.back")}</Text>
+            </TouchableOpacity>
+          }
+        />
+      ),
     })
   });
   const submit = async (data : any) => {
@@ -40,7 +43,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen({
       UserStore.setIsLoggedIn(true);
       navigation.navigate("Home");
     } else {
-      Alert.alert("Error", res.data.message);
+      ErrorAlert(res);
     }
     setIsLoading(false);
   }
@@ -78,9 +81,9 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen({
               />
             )}
             name="password"
-            rules={{ required: true, minLength: 4 }}
+            rules={{ required: true, minLength: 8 }}
           />
-          {(errors.email || errors.password) && <Text style={{color: "red"}}>Password or email fields are not correctly filled</Text>}
+          {(errors.email || errors.password) && <Text style={{color: "red"}}>{translate("loginScreen.missingFields")}</Text>}
         </View>
         <Button text={"Login"} onPress={handleSubmit(submit)} textStyle={{color: "white"}} />
       </KeyboardAvoidingView>

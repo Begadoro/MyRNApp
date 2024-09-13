@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "display": "flex",
+      "flexDirection": "row",
+      "gap": 8,
+      "justifyContent": "flex-start",
+      "maxHeight": 100,
+      "opacity": 1,
+      "width": "100%",
+    }
+  }
+>
+  <RCTImageView
+    accessibilityState={
+      {
+        "busy": undefined,
+        "checked": undefined,
+        "disabled": undefined,
+        "expanded": undefined,
+        "selected": undefined,
+      }
+    }
+    internal_analyticTag={null}
+    resizeMode="cover"
+    source={
+      [
+        {
+          "uri": "https://via.placeholder.com/150",
+        },
+      ]
+    }
+    style={
+      {
+        "borderRadius": 16,
+        "height": 80,
+        "overflow": "hidden",
+        "width": 80,
+      }
+    }
+  />
+  <View
+    style={
+      {
+        "alignItems": "flex-start",
+        "display": "flex",
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "fontSize": 16,
+            "maxWidth": "90%",
+          },
+          {
+            "fontWeight": "bold",
+          },
+        ]
+      }
+    >
+      Product 1
+    </Text>
+    <Text
+      style={
+        {
+          "fontSize": 16,
+          "maxWidth": "90%",
+        }
+      }
+    >
+      homeScreen.itemDesc undefined
+       
+      Product 1
+    </Text>
+  </View>
+</View>
+`;

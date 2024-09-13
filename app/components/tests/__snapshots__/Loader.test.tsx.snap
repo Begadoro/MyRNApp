@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "display": "flex",
+      },
+      {
+        "alignItems": "center",
+        "backgroundColor": "rgba(0,0,0,0.6)",
+        "height": 1334,
+        "justifyContent": "center",
+        "position": "absolute",
+        "width": 750,
+        "zIndex": 1000,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#F4F2F1",
+        "borderRadius": 16,
+        "display": "flex",
+        "flexDirection": "column",
+        "gap": 4,
+        "height": 100,
+        "justifyContent": "center",
+        "width": 100,
+      }
+    }
+  >
+    <RCTImageView
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      internal_analyticTag={null}
+      resizeMode="cover"
+      source={
+        [
+          {
+            "__packager_asset": true,
+            "height": 1,
+            "scale": 1,
+            "uri": "file://assets/full/path/to/directory/name.type",
+            "width": 1,
+          },
+        ]
+      }
+      style={
+        {
+          "height": 50,
+          "overflow": "hidden",
+          "width": 50,
+        }
+      }
+    />
+  </View>
+</View>
+`;
