@@ -2963,7 +2963,7 @@ anymatch@^3.0.3:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
-apisauce@3.0.1:
+apisauce@3.0.1, apisauce@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/apisauce/-/apisauce-3.0.1.tgz#ecee5276f6c3528f28cd635834fc6b8be0519c61"
   integrity sha512-4HEmETv0skPW+bFS4TzB5nQ5y2TdafbUpnAjp83MW8Re9lHwngao2hpnk7aIaxExJqSTxkpWl+ThgZbqjx2bpQ==
@@ -8010,6 +8010,13 @@ react@18.2.0:
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
   dependencies:
     loose-envify "^1.1.0"
+
+reactotron-apisauce@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/reactotron-apisauce/-/reactotron-apisauce-3.0.5.tgz#74e871a7461e9a5ceb1e0febbb8c3946df5de6e8"
+  integrity sha512-zNPl6ao85BVoIwtl7C11dfVPEPOrIbZBLQzR57PQzsnBl9LldmYfiNKZKm9YJnzGhFLlnMfuJVgFj69NGORS6w==
+  dependencies:
+    apisauce "^3.0.1"
 
 reactotron-core-client@2.9.4, reactotron-core-client@^2.8.13:
   version "2.9.4"

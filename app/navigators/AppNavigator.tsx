@@ -56,14 +56,13 @@ const Stack = createNativeStackNavigator<AppStackParamList>()
 
 
 const AppStack = observer(function AppStack() {
-  const { UserStore } = useStores();
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false, navigationBarColor: colors.background }}
     >
       <Stack.Screen name="Home" component={Screens.HomeScreen} />
       <Stack.Screen name="Login" component={Screens.LoginScreen} />
-      <Stack.Screen name="Product" component={UserStore.isLoggedIn ? Screens.ProductScreen : Screens.LoginScreen} />
+      <Stack.Screen name="Product" component={Screens.ProductScreen} />
     </Stack.Navigator>
   )
 })

@@ -19,6 +19,8 @@ import { backgroundAnimatedStyle, imageAnimatedStyle } from "app/utils/animation
 import { spacing } from "app/theme"
 import { translate } from "app/i18n"
 import { ErrorAlert } from "app/utils/errorAlert"
+import { useCachedResult } from "app/utils/useCachedResult"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 interface ProductScreenProps extends AppStackScreenProps<"Product"> {}
 
@@ -38,21 +40,30 @@ export const ProductScreen: FC<ProductScreenProps> = observer(function ProductSc
 
   const [fullProduct, setFullProduct] = useState<ProductDetailsFromAPI>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const cacheContent = useCachedResult(product.id)
 
   const fetchProductData = async () => {
     setIsLoading(true)
     const res = await api.getProductDetails(product.id)
     if (res.ok) {
       setFullProduct(res.data.data)
+      await AsyncStorage.setItem(
+        product.id.toString(),
+        JSON.stringify({ data: res.data.data, timestamp: new Date().getTime() }),
+      )
     } else {
-      ErrorAlert(res);
+      ErrorAlert(res)
       navigation.goBack()
     }
     setIsLoading(false)
   }
 
   useEffect(() => {
-    fetchProductData().then()
+    const dataRequest = async () => {
+      if (await cacheContent) setFullProduct(await cacheContent)
+      else await fetchProductData()
+    }
+    dataRequest().then()
   }, [])
 
   useLayoutEffect(() => {

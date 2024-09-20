@@ -54,6 +54,11 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen({ na
     [page],
   )
 
+    const goToProductPage = (product: ProductFromAPI) => {
+      if(UserStore.isLoggedIn) navigation.navigate("Product", { product })
+      else navigation.navigate("Login")
+    }
+
   const profileButtonPressed = async () => {
     if (UserStore.isLoggedIn) {
       setIsLoading(true)
@@ -172,7 +177,7 @@ export const HomeScreen: FC<HomeScreenProps> = observer(function HomeScreen({ na
                   <ItemSquare
                     key={product.id}
                     product={product}
-                    onPress={() => navigation.navigate("Product", { product })}
+                    onPress={() => goToProductPage(product)}
                   />
                 ))}
               <View>
